@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			 #main{
+    background: red;
+    width:100px;height:100px;
+    position: absolute;
+    left:0;top:0;
+  }
+		</style>
+
+	</head>
+<body>
+    <div id="main"></div>
+</body>
+<script src="echarts.js"></script>
+	<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded',function(){
+		var box=document.getElementById("main");
+	box.addEventListener('touchstart',function(ev){
+		var disx=ev.targetTouches[0].clientX-box.offsetLeft;
+		var disy=ev.targetTouches[0].clientY-box.offsetTop;
+		
+	document.addEventListener('touchmove',fn1,false)
+	function fn1(ev){
+//		box.style.left=ev.clientX-disx;
+
+        box.style.left=ev.targetTouches[0].clientX-disx+"px";
+		box.style.top=ev.targetTouches[0].clientY-disy+"px";
+	
+	}
+	box.addEventListener('touchend',fn2);
+function fn2(){
+	document.removeEventListener('touchmove',fn1)
+	document.removeEventListener('touchend',fn2)
+}
+   
+	
+	ev.preventDefault();	
+	},false)
+	
+	},false)
+	
+
+	</script>
+</html>
